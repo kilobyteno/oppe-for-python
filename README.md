@@ -1,4 +1,4 @@
-# oppe.py
+# oppe-for-python
 An API wrapper for [Oppe](https://oppe.app) written in Python.
 
 

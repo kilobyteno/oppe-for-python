@@ -1,1 +1,7 @@
 setuptools~=68.1.2
+certifi==2023.7.22
+pytest==7.4.1
+python-dotenv==1.0.0
+requests==2.31.0
+tomli==2.0.1
+urllib3==2.0.4

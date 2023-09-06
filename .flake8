@@ -9,3 +9,6 @@ exclude =
     .github,
     .pytest_cache,
     venv,
+    build,
+    dist,
+    oppe.egg-info,

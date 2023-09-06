@@ -10,7 +10,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name='oppe',
-    version='0.0.1',
+    version='0.0.3',
     description='A Python API Wrapper for Oppe',
     long_description=readme,
     long_description_content_type='text/markdown',

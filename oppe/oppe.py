@@ -1,6 +1,8 @@
-import requests
-from oppe.config import Config
 import json
+
+import requests
+
+from oppe.config import Config
 
 
 class Oppe:
@@ -12,16 +14,17 @@ class Oppe:
             The authentication token.
         project (str):
             The project identifier.
-        """
+    """
+
     def __init__(self, token, project):
         """
-          Initializes an instance of the Oppe class.
+        Initialize an instance of the Oppe class.
 
-          :param token: The authentication token.
-          :type token: str
-          :param project: The project identifier.
-          :type project: str
-          """
+        :param token: The authentication token.
+        :type token: str
+        :param project: The project identifier.
+        :type project: str
+        """
         self.token = token
         self.project = project
 
@@ -40,15 +43,14 @@ class Oppe:
         :rtype: bool
         """
         data = {
-            "channel_id": channel,
-            "title": title,
-            "description": description,
+            'channel_id': channel,
+            'title': title,
+            'description': description,
         }
         headers = {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {self.token}"
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': f'Bearer {self.token}'
         }
-        response = requests.post(Config.EVENT_URL, data=json.dumps(data), headers=headers)
+        requests.post(Config.EVENT_URL, data=json.dumps(data), headers=headers)
         return True
-

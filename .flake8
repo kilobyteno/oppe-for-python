@@ -1,6 +1,6 @@
 [flake8]
 max-line-length = 160
-ignore =
+ignore = D104, D400, D210, D101, D100, D107, D106, I100, I202, I101
 import-order-style = pycharm
 statistics = True
 exclude =

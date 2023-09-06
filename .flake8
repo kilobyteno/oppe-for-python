@@ -1,0 +1,11 @@
+[flake8]
+max-line-length = 160
+ignore =
+import-order-style = pycharm
+statistics = True
+exclude =
+    .git,
+    __pycache__,
+    .github,
+    .pytest_cache,
+    venv,

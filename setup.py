@@ -10,7 +10,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name='oppe',
-    version='0.0.3',
+    version='0.0.2',
     description='A Python API Wrapper for Oppe',
     long_description=readme,
     long_description_content_type='text/markdown',
@@ -26,6 +26,10 @@ setuptools.setup(
     packages=['oppe'],
     include_package_data=True,
     install_requires=requirements,
+    setuptools_git_versioning={
+        'enabled': True,
+    },
+    setup_requires=['setuptools-git-versioning<2'],
     classifiers=[
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',

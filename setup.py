@@ -22,7 +22,7 @@ setuptools.setup(
     url='https://github.com/kilobyteno/oppe-for-python',
     author='Kilobyte AS',
     license='MIT',
-    python_requires='>=3.6',
+    python_requires='>=3.8',
     packages=['oppe'],
     include_package_data=True,
     install_requires=requirements,

@@ -19,5 +19,10 @@ class Config:
     if os.path.exists(dotenv_path):
         load_dotenv(dotenv_path)
 
-    BASE_URL = f'https://{os.getenv("ENV")}oppe.app'
+    ENV = os.getenv('ENV')
+    if ENV == 'staging':
+        BASE_URL = 'https://staging.oppe.app'
+    else:
+        BASE_URL = 'https://oppe.app'
+
     EVENT_URL = f'{BASE_URL}/api/event/'

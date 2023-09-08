@@ -35,6 +35,11 @@ jobs:
           inputs: requirements.txt requirements-dev.txt
       - name: Rename file
         run: mv .env.example .env
+      - name: Change environment variables in .env
+        run: |
+          sed -i "s/TEST_API_TOKEN=/TEST_API_TOKEN=${{ secrets.TEST_API_TOKEN }}/g" .env
+          sed -i "s/TEST_PROJECT_ID=/TEST_PROJECT_ID=${{ secrets.TEST_PROJECT_ID }}/g" .env
+          sed -i "s/TEST_CHANNEL_ID=/TEST_CHANNEL_ID=${{ secrets.TEST_CHANNEL_ID }}/g" .env
       - name: Run Tests
         run: |
           pytest --disable-pytest-warnings

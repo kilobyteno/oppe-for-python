@@ -1,5 +1,7 @@
 import setuptools
 
+from oppe import __name__ as name
+from oppe import __version__ as version
 from oppe.utils import format_tag_name
 
 # Add README.md as long description using open() and read()
@@ -9,17 +11,6 @@ with open('README.md') as f:
 # Add requirements.txt as install_requires using open() and readlines()
 with open('requirements.txt') as f:
     requirements = f.read().splitlines()
-
-# Get name and version from __init__.py
-with open('oppe/__init__.py') as f:
-    # Find line where __name__ is defined
-    for line in f.readlines():
-        if line.startswith('__name__'):
-            # Split line by = and strip whitespace
-            name = line.split('=')[1].strip().replace("'", '')
-        if line.startswith('__version__'):
-            # Split line by = and strip whitespace
-            version = line.split('=')[1].strip().replace("'", '')
 
 
 setuptools.setup(

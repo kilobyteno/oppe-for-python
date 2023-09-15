@@ -35,6 +35,8 @@ jobs:
         run: |
           TAG=${{ steps.extract_tag.outputs.tag }}
           sed -i "s/__version__ = .*/__version__ = '$TAG'/" oppe/__init__.py
+          git config --global user.email "hei@kilobyte.no"
+          git config --global user.name "kilobyte-bot"
           git add oppe/__init__.py
           git commit -m "Update __version__ to $TAG"
           git push

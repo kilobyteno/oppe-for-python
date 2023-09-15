@@ -1,5 +1,7 @@
 import setuptools
 
+from oppe.utils import format_tag_name
+
 # Add README.md as long description using open() and read()
 with open('README.md') as f:
     readme = f.read()
@@ -40,6 +42,9 @@ setuptools.setup(
     install_requires=requirements,
     setuptools_git_versioning={
         'enabled': True,
+        'dev_template': '{tag}',
+        'dirty_template': '{tag}',
+        'tag_formatter': format_tag_name,
     },
     setup_requires=['setuptools-git-versioning<2'],
     classifiers=[

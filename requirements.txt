@@ -1,4 +1,4 @@
-setuptools~=68.1.2
+setuptools>=65.6.3
 wheel~=0.41.2
 certifi==2023.7.22
 python-dotenv==1.0.0

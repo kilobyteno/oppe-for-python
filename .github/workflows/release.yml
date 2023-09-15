@@ -38,7 +38,7 @@ jobs:
           echo "Version: ${{ github.ref_name }}"
           sed -i "s/__version__ = .*/__version__ = '${{ github.ref_name }}'/" ./oppe/__init__.py
           cat ./oppe/__init__.py
-          git commit -am "Update __version__ to $TAG"
+          git commit -am "Bump version to ${{ github.ref_name }}"
           git push origin HEAD:main
       - name: Build package
         run: |

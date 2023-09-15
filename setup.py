@@ -8,9 +8,21 @@ with open('README.md') as f:
 with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
+# Get name and version from __init__.py
+with open('oppe/__init__.py') as f:
+    # Find line where __name__ is defined
+    for line in f.readlines():
+        if line.startswith('__name__'):
+            # Split line by = and strip whitespace
+            name = line.split('=')[1].strip().replace("'", '')
+        if line.startswith('__version__'):
+            # Split line by = and strip whitespace
+            version = line.split('=')[1].strip().replace("'", '')
+
+
 setuptools.setup(
-    name='oppe',
-    version='0.0.2',
+    name=name,
+    version=version,
     description='A Python API Wrapper for Oppe',
     long_description=readme,
     long_description_content_type='text/markdown',

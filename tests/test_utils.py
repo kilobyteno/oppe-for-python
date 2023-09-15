@@ -14,6 +14,15 @@ def test_request_header():
     assert header['Authorization'] == f'Bearer {api_token}'
 
 
+def test_request_header_with_empty_api_token():
+    """ Test request header with empty api token """
+    api_token = ''
+    try:
+        request_header(api_token=api_token)
+    except ValueError as e:
+        assert str(e) == 'API Token cannot be empty'
+
+
 def test_format_tag_name():
     """ Test format tag name """
     tag_name = '1.0.0'

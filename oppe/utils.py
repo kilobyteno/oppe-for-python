@@ -12,6 +12,10 @@ def request_header(api_token: str) -> dict:
     :return: Authorization Header
     :rtype: dict
     """
+    # Check if the API Token is empty
+    if not api_token:
+        raise ValueError('API Token cannot be empty')
+
     return {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

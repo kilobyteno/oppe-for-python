@@ -19,7 +19,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 10
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -34,7 +34,7 @@ jobs:
       - name: Update __version__ in __init__.py
         run: |
           TAG=${{ steps.extract_tag.outputs.tag }}
-          sed -i "s/__version__ = .*/__version__ = '$TAG'/" ./oppe/__init__.py
+          sed -i "s/__version__ = .*/__version__ = '$TAG'/" ./oppe/__init__.py && cat ./oppe/__init__.py
           git config --global user.email "hei@kilobyte.no"
           git config --global user.name "kilobyte-bot"
           git commit -am "Update __version__ to $TAG"

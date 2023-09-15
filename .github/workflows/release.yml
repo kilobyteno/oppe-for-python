@@ -34,7 +34,7 @@ jobs:
       - name: Update __version__ in __init__.py
         run: |
           TAG=${{ steps.extract_tag.outputs.tag }}
-          sed -i "s/__version__ = .*/__version__ = '$TAG'/" oppe/__init__.py
+          sed -i "s/__version__ = .*/__version__ = '$TAG'/" ./oppe/__init__.py
           git config --global user.email "hei@kilobyte.no"
           git config --global user.name "kilobyte-bot"
           git add oppe/__init__.py

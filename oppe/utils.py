@@ -1,5 +1,6 @@
 """ Common utilities for the Oppe package """
 import re
+import uuid
 
 
 def request_header(api_token: str) -> dict:
@@ -37,3 +38,21 @@ def format_tag_name(name: str) -> str:
 
     # If the tag name is not formatted correctly, raise an error
     raise ValueError(f'Wrong tag name: {name}')
+
+
+def validate_uuid(uuid_input: str) -> bool:
+    """
+    Validate if input string is a valid UUID
+
+    :param uuid_input: UUID string
+    :type uuid_input: str
+    :return: True if input is a valid UUID, False otherwise
+    :rtype: bool
+    """
+    if uuid_input is None:
+        return False
+    try:
+        uuid.UUID(uuid_input)
+    except ValueError:
+        return False
+    return True

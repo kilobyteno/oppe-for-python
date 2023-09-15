@@ -1,6 +1,6 @@
 from faker import Faker
 
-from oppe.utils import format_tag_name, request_header
+from oppe.utils import format_tag_name, request_header, validate_uuid
 
 fake = Faker()
 
@@ -46,3 +46,27 @@ def test_format_tag_name_with_wrong_tag_name_3():
         format_tag_name(name=tag_name)
     except ValueError as e:
         assert str(e) == f'Wrong tag name: {tag_name}'
+
+
+def test_validate_uuid():
+    """ Test uuid validator """
+    uuid_input = fake.uuid4()
+    assert validate_uuid(uuid_input=uuid_input) is True
+
+
+def test_validate_uuid_with_none():
+    """ Test uuid validator with None """
+    uuid_input = None
+    assert validate_uuid(uuid_input=uuid_input) is False
+
+
+def test_validate_uuid_with_empty_string():
+    """ Test uuid validator with empty string """
+    uuid_input = ''
+    assert validate_uuid(uuid_input=uuid_input) is False
+
+
+def test_validate_uuid_with_wrong_uuid():
+    """ Test uuid validator with wrong uuid """
+    uuid_input = fake.sha256()
+    assert validate_uuid(uuid_input=uuid_input) is False

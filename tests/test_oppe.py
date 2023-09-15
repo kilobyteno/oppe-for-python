@@ -15,7 +15,7 @@ if os.path.exists(dotenv_path):
 
 def init_oppe():
     """ Initialize Oppe """
-    return Oppe(token=os.getenv('TEST_API_TOKEN'), project=os.getenv('TEST_PROJECT_ID'))
+    return Oppe(api_token=os.getenv('TEST_API_TOKEN'), project_id=os.getenv('TEST_PROJECT_ID'))
 
 
 def test_publish_event():

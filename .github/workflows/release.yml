@@ -21,6 +21,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.KILOBYTE_BOT_PAT }}
+          fetch-tags: true
       - name: Set up Python
         uses: actions/setup-python@v4
         with:

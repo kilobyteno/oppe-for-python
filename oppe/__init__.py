@@ -3,4 +3,4 @@
 from oppe.oppe import Oppe  # noqa: F401
 
 __name__ = 'oppe'
-__version__ = '0.0.4'
+__version__ = '0.0.5'

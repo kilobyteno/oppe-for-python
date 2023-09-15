@@ -77,5 +77,7 @@ def test_publish_event_with_no_description():
 def test_publish_event_with_wrong_channel_id():
     """ Test publish event with wrong channel id """
     oppe = init_oppe()
-    response = oppe.event(channel_id=fake.sha256(), title=fake.domain_word(), description=fake.sentence())
-    assert response is False
+    try:
+        oppe.event(channel_id=fake.sha256(), title=fake.domain_word())
+    except ValueError as e:
+        assert str(e) == 'Channel ID must be a valid UUID'

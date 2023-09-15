@@ -3,7 +3,7 @@ import json
 import requests
 
 from oppe.config import Config
-from oppe.utils import request_header
+from oppe.utils import request_header, validate_uuid
 
 
 class Oppe:
@@ -47,6 +47,8 @@ class Oppe:
         :return: True if the event was triggered successfully, False otherwise.
         :rtype: bool
         """
+        if not validate_uuid(uuid_input=channel_id):
+            raise ValueError('Channel ID must be a valid UUID')
         data = {
             'channel_id': channel_id,
             'title': title,

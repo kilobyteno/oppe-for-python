@@ -72,3 +72,10 @@ def test_publish_event_with_no_description():
     oppe = init_oppe()
     response = oppe.event(channel_id=os.getenv('TEST_CHANNEL_ID'), title=fake.domain_word())
     assert response is True
+
+
+def test_publish_event_with_wrong_channel_id():
+    """ Test publish event with wrong channel id """
+    oppe = init_oppe()
+    response = oppe.event(channel_id=fake.sha256(), title=fake.domain_word(), description=fake.sentence())
+    assert response is False

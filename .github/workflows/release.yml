@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.ref_name }}
+          token: ${{ secrets.KILOBYTE_BOT_PAT }}
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -29,13 +29,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+      - name: Git Config
+        run: |
+          git config --global user.email "hei@kilobyte.no"
+          git config --global user.name "kilobyte-bot"
       - name: Update __version__ in __init__.py
         run: |
           echo "Version: ${{ github.ref_name }}"
           sed -i "s/__version__ = .*/__version__ = '${{ github.ref_name }}'/" ./oppe/__init__.py
           cat ./oppe/__init__.py
-          git config --global user.email "hei@kilobyte.no"
-          git config --global user.name "kilobyte-bot"
           git commit -am "Update __version__ to $TAG"
           git push
       - name: Build package

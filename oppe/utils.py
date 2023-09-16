@@ -13,6 +13,8 @@ def request_header(api_token: str) -> dict:
     :type api_token: str
     :return: Authorization Header
     :rtype: dict
+
+    :raises ApiTokenMissingError: If the API Token is empty
     """
     # Check if the API Token is empty
     if not api_token:

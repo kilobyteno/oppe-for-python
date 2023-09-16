@@ -42,7 +42,7 @@ jobs:
           sed -i "s/OPPE_TEST_CHANNEL_ID=/OPPE_TEST_CHANNEL_ID=${{ secrets.OPPE_TEST_CHANNEL_ID }}/g" .env
       - name: Run Tests
         run: |
-          pytest --disable-pytest-warnings --cov --cov-report=xml --cov-report=term-missing
+          pytest
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         env:

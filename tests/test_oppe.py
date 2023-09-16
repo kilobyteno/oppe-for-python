@@ -81,4 +81,4 @@ def test_publish_event_with_wrong_channel_id():
     try:
         oppe.event(channel_id=fake.sha256(), title=fake.domain_word())
     except UuidValidationError as e:
-        assert str(e) == 'Channel ID must be a valid UUID'
+        assert e.msg == 'Channel ID must be a valid UUID'

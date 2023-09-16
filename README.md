@@ -1,4 +1,9 @@
 # oppe-for-python
+[![codecov](https://codecov.io/gh/kilobyteno/oppe-for-python/graph/badge.svg?token=JKLDG13D1W)](https://codecov.io/gh/kilobyteno/oppe-for-python)
+[![PyPI version](https://badge.fury.io/py/oppe.svg)](https://badge.fury.io/py/oppe)
+[![Downloads](https://pepy.tech/badge/oppe)](https://pepy.tech/project/oppe)
+[![License](https://img.shields.io/github/license/kilobyteno/oppe-for-python)](LICENSE)
+
 An API wrapper for [Oppe](https://oppe.app) written in Python.
 
 

@@ -55,18 +55,23 @@ class Oppe:
         if not validate_uuid(uuid_input=channel_id):
             raise UuidValidationError(msg='Channel ID must be a valid UUID')
 
-        # Make sure data is an object
-        if not data:
-            data = {}
-
         # Create payload to send to Oppe
         payload = {
             'channel_id': channel_id,
             'title': title,
-            'description': description,
-            'emoji': emoji,
-            'data': json.dumps(data),
         }
+
+        # If description is not None, add it to the payload
+        if description:
+            payload['description'] = description
+
+        # If emoji is not None, add it to the payload
+        if emoji:
+            payload['emoji'] = emoji
+
+        # If data is not None, add it to the payload
+        if data:
+            payload['data'] = json.dumps(data)
 
         # Send request to Oppe
         response = requests.post(Config.EVENT_URL, data=json.dumps(payload), headers=request_header(api_token=self.api_token))

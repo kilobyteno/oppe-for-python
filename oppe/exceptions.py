@@ -4,13 +4,13 @@
 class OppeError(Exception):
     """Base class for other exceptions"""
 
-    def __init__(self, msg='', data=None):
+    def __init__(self, msg='Unknown error occurred', data=None):
         self.msg = msg
         self.data = data
 
     def __str__(self):
         """Return a string representation of the exception"""
-        return f'{self.msg}: {self.data}'
+        return f'{self.msg}: {self.data}' if self.data else self.msg
 
 
 class UuidValidationError(OppeError):

@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from faker import Faker
 
+from oppe.exceptions import UuidValidationError
 from oppe.oppe import Oppe
 
 fake = Faker()
@@ -79,5 +80,5 @@ def test_publish_event_with_wrong_channel_id():
     oppe = init_oppe()
     try:
         oppe.event(channel_id=fake.sha256(), title=fake.domain_word())
-    except ValueError as e:
+    except UuidValidationError as e:
         assert str(e) == 'Channel ID must be a valid UUID'

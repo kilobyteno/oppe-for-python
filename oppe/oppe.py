@@ -3,6 +3,7 @@ import json
 import requests
 
 from oppe.config import Config
+from oppe.exceptions import EventRequestError, UuidValidationError
 from oppe.utils import request_header, validate_uuid
 
 
@@ -46,9 +47,12 @@ class Oppe:
 
         :return: True if the event was triggered successfully, False otherwise.
         :rtype: bool
+
+        :raises UuidValidationError: If the channel_id is not a valid UUID.
+        :raises EventRequestError: If the event request failed.
         """
         if not validate_uuid(uuid_input=channel_id):
-            raise ValueError('Channel ID must be a valid UUID')
+            raise UuidValidationError(msg='Channel ID must be a valid UUID')
         data = {
             'channel_id': channel_id,
             'title': title,
@@ -56,5 +60,10 @@ class Oppe:
             'emoji': emoji,
             'data': data
         }
-        requests.post(Config.EVENT_URL, data=json.dumps(data), headers=request_header(api_token=self.api_token))
+        response = requests.post(Config.EVENT_URL, data=json.dumps(data), headers=request_header(api_token=self.api_token))
+        if response.status_code != 201:
+            raise EventRequestError(
+                msg=f'Failed to send event to Oppe! Status code: {response.status_code}',
+                data=response.json()
+            )
         return True

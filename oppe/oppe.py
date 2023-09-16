@@ -51,16 +51,25 @@ class Oppe:
         :raises UuidValidationError: If the channel_id is not a valid UUID.
         :raises EventRequestError: If the event request failed.
         """
+        # Validate channel_id
         if not validate_uuid(uuid_input=channel_id):
             raise UuidValidationError(msg='Channel ID must be a valid UUID')
-        data = {
+
+        # Make sure data is an object
+        if not data:
+            data = {}
+
+        # Create payload to send to Oppe
+        payload = {
             'channel_id': channel_id,
             'title': title,
             'description': description,
             'emoji': emoji,
-            'data': data
+            'data': json.dumps(data),
         }
-        response = requests.post(Config.EVENT_URL, data=json.dumps(data), headers=request_header(api_token=self.api_token))
+
+        # Send request to Oppe
+        response = requests.post(Config.EVENT_URL, data=json.dumps(payload), headers=request_header(api_token=self.api_token))
         if response.status_code != 201:
             raise EventRequestError(
                 msg=f'Failed to send event to Oppe! Status code: {response.status_code}',

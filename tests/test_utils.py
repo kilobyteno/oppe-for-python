@@ -1,5 +1,6 @@
 from faker import Faker
 
+from oppe.exceptions import ApiTokenMissingError
 from oppe.utils import format_tag_name, request_header, validate_uuid
 
 fake = Faker()
@@ -19,8 +20,8 @@ def test_request_header_with_empty_api_token():
     api_token = ''
     try:
         request_header(api_token=api_token)
-    except ValueError as e:
-        assert str(e) == 'API Token cannot be empty'
+    except ApiTokenMissingError as e:
+        assert e.msg == 'API Token cannot be empty'
 
 
 def test_format_tag_name():

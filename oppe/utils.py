@@ -2,6 +2,8 @@
 import re
 import uuid
 
+from oppe.exceptions import ApiTokenMissingError
+
 
 def request_header(api_token: str) -> dict:
     """
@@ -11,10 +13,12 @@ def request_header(api_token: str) -> dict:
     :type api_token: str
     :return: Authorization Header
     :rtype: dict
+
+    :raises ApiTokenMissingError: If the API Token is empty
     """
     # Check if the API Token is empty
     if not api_token:
-        raise ValueError('API Token cannot be empty')
+        raise ApiTokenMissingError(msg='API Token cannot be empty')
 
     return {
         'Accept': 'application/json',

@@ -14,16 +14,21 @@ pip install oppe
 
 ```python
 from oppe import Oppe
+from oppe.exceptions import EventRequestError
 
 oppe = Oppe(api_token='insert-api-token-here', project_id="uuid-of-project")
 
-oppe.event(
-    channel_id="uuid-of-channel",
-    title="user-registered",
-    description="A new user has registered.",
-    emoji="👋",
-    data={
-        "user_id": 123,
-    },
-)
+try:
+    oppe.event(
+        channel_id="uuid-of-channel",
+        title="user-registered",
+        description="A new user has registered.",
+        emoji="👋",
+        data={
+            "user_id": 123,
+        },
+    )
+except EventRequestError as e:
+    # Handle error
+    print(e)
 ```

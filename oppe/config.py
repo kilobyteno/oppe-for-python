@@ -14,7 +14,7 @@ class Config:
             The URL for accessing Oppe app events
     """
 
-    BASE_URL = 'https://oppe.app/api'
+    BASE_URL = 'https://oppe.app/api/v0'
 
     # Reading the env variables
     dotenv_path = os.path.join(os.path.dirname(__file__), '..', '.env')
@@ -23,6 +23,6 @@ class Config:
 
     ENV = os.getenv('OPPE_ENV')
     if ENV == 'staging':
-        BASE_URL = 'https://staging.oppe.app/api'
+        BASE_URL = 'https://staging.oppe.app/api/v0'
 
     EVENT_URL = f'{BASE_URL}/event/'

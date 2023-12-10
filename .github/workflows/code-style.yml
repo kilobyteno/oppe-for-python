@@ -33,7 +33,7 @@ jobs:
         run: |
           flake8 --config=.flake8
       - name: Check for vulnerabilities
-        uses: pypa/gh-action-pip-audit@v1.0.6
+        uses: pypa/gh-action-pip-audit@v1.0.8
         with:
           inputs: requirements.txt requirements-dev.txt
       - name: Rename file
